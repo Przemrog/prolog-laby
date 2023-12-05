@@ -1,0 +1,36 @@
+Zadanie 1
+
+(+ 2 (/ (* 3 4) 8))
+
+Wynik:7/2
+
+Zadanie 2
+
+(+ (sin 12) (cos (mod 256 32)))
+
+Wynik: 0.46342707
+
+
+Zadanie 3
+
+(defun suma (a b) (+ a b))
+
+Zadanie 4
+
+(defun czyParzysta (liczba) (= (mod liczba 2) 0))
+
+Zadanie 5
+
+(defun silnia (x) (if (> x 0) (* x (silnia (- x 1))) 1))
+
+Zadanie 6
+
+(defun fib (n) (if (< n 2) n (+ (fib (- n 1)) (fib (- n 2)))))
+
+Zadanie 7
+
+(defun suma-nieparzystych (początek koniec) (loop for liczba from początek to koniec when (oddp liczba) sum liczba))
+
+Zadanie 8
+
+(defun suma-kwadratow (poczatek koniec) (loop for liczba from poczatek to koniec sum (* liczba liczba)))
