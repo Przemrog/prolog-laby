@@ -1,0 +1,106 @@
+; ZADANIE 1
+;(setq lista1 '(1 2 3 4))
+;(setq lista2 '(a b c d))
+(defun laczenieList (lista1 lista2)
+      (let ((wynik '()))
+            (dolist (item lista1)
+                  (push item wynik))
+            (dolist (item lista2)
+                  (push item wynik))
+            (reverse wynik)))
+; ALTERNATYWNA WERSJA
+
+(format t "Zadanie 1~%")
+(format t "Podaj liste: ") (setq 1A (read))
+(format t "Podaj liste: ") (setq 1B (read))
+(format t "Wynik polaczenia lista A i B: ~a~%" (laczenieList 1A 1B))
+
+;
+; ZADANIE 2
+;
+(defun odwroc (lista)
+      (let ((wynik '()))
+            (dolist (item lista)
+                  (push item wynik))
+            wynik))
+;           
+; ZADANIE 3
+;
+(defun palindrom (lista)
+      (let ((tempList (odwroc lista)))
+            (equal lista tempList)))
+;
+; ZADANIE 4
+;
+(defun wstawelement (element lista)
+      (if (null lista)
+            (list element)
+            (if (< element (car lista))
+                  (cons element lista)
+                  (cons (car lista) (wstawelement element (cdr lista))))))
+(defun sortlist (lista)
+      (let ((wynik '()))
+            (dolist (item lista)
+                  (setq wynik (wstawelement item wynik)))
+            wynik))
+;
+; ZADANIE 5
+;
+(defun iloczyn (lista1 lista2)
+      (if (or (null lista1) (null lista2))
+            '()
+            (cons (* (car lista1) (car lista2))
+                  (iloczyn (cdr lista1) (cdr lista2)))))
+;
+; ZADANIE 6
+;
+(defun dzieli3 (liczba)
+      (= (mod liczba 3) 0))
+
+(defun zadanie6 (lista)
+      (let ((licznik 0))
+            (dolist (item lista)
+                  (if (dzieli3 item)
+                        (setq licznik (+licznik 1))))
+                  licznik))               
+;
+; ZADANIE 7
+;                 
+(defun zadanie7 (lista n)
+  (let ((licznik 0))
+    (dolist (item lista)
+      (if (= (mod item n) 0)
+          (setq licznik (+ licznik 1))))
+    licznik))
+
+;
+; ZADANIE 8
+;
+(defun przefiltruj-i-odwroc-stos (stos)
+  (let ((przefiltrowany-stos '()))
+    (dolist (element stos)
+      (when (and (integerp element) (= 0 (mod element 5)))
+        (push element przefiltrowany-stos)))
+    przefiltrowany-stos))
+
+;
+; ZADANIE 9
+;
+(defun generuj-liste-z-przedzialu (a b)
+  (let ((lista '()))
+    (dotimes (i (- b a -1))
+      (push (+ a i) lista))
+    lista))
+    
+;
+; ZADANIE 10
+;
+(defun generuj-liste-ascii (poczatek koniec)
+  (let ((lista '()))
+    (dotimes (i (- koniec poczatek -1))
+      (push (code-char (+ poczatek i)) lista))
+    lista))
+
+
+;ZADANIE DOMOWE, DORÓB OTOCZKE, MENU GDY PROGRAM SIĘ URUCHAMIA
+;SKOŃCZYĆ WSZYSTKIE ZADANIA Z DOKUMENTU
