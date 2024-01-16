@@ -1,15 +1,15 @@
-d³ugoœæ(kontener1, 20).
-d³ugoœæ(kontener2, 25).
+dlugosc(kontener1, 20).
+dlugosc(kontener2, 25).
 
-szerokoœæ(kontener1,30).
-szerokoœæ(kontener2,9).
+szerokosc(kontener1,30).
+szerokosc(kontener2,9).
 
-wysokoœæ(kontener1, 15).
-wysokoœæ(kontener2, 10).
+wysokosc(kontener1, 15).
+wysokosc(kontener2, 10).
 
 objetosc(Kontener, Objetosc) :-
-    d³ugoœæ(Kontener, Dlugosc),
-    szerokoœæ(Kontener, Szerokosc),
-    wysokoœæ(Kontener, Wysokosc),
+    dlugosc(Kontener, Dlugosc),
+    szerokosc(Kontener, Szerokosc),
+    wysokosc(Kontener, Wysokosc),
     Objetosc is Dlugosc * Szerokosc * Wysokosc.
 
