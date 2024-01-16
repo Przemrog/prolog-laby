@@ -1,0 +1,54 @@
+;; ZADANIE 1
+
+;; Definicja klasy Book
+(defclass book ()
+  ((title :initarg :title :accessor book-title)
+   (author :initarg :author :accessor book-author)
+   (publisher :initarg :publisher  :accessor book-publisher)
+   (release-date :initarg :release-date :accessor book-release-date)
+   (isbn :initarg :isbn :accessor book-isbn)))
+   
+   
+;; Lista przechowujaca ksiazki w bibliotece
+(defparameter *library* '())
+
+;; Metoda wyswietlajaca informacje o ksiazce
+(defmethod display-book ((b book))
+  (format t "Tytul: ~A~%Autor: ~A~%Wydawca: ~A~%Data: ~A~%ISBN: ~A~%"
+          (book-title b)
+          (book-author b)
+          (book-publisher b)
+          (book-release-date b)
+          (book-isbn b)))
+
+;; Funkcja dodajaca ksiazke do biblioteki
+(defun add-book (title author publisher release-date isbn)
+  (let ((new-book (make-instance 'book
+                                 :title title
+                                 :author author
+                                 :publisher publisher
+                                 :release-date release-date
+                                 :isbn isbn)))
+    (push new-book *library*)
+    (format t "Ksiazka dodana do biblioteki.~%")
+    (display-book new-book)))
+    
+;; Funkcja usuwajaca ksiazke z biblioteki
+(defun remove-book (isbn)
+  (let ((book-to-remove (find isbn *library* :key #'book-isbn)))
+    (if book-to-remove
+        (progn
+          (setq *library* (remove book-to-remove *library*))
+          (format t "Ksiazka usunieta z biblioteki.~%"))
+        (format t "Nie znaleziono ksiazki o podanym ISBN.~%"))))
+        
+        
+;; Funkcja wyszukujaca ksiazki w bibliotece po tytule
+(defun search-books-by-title (title)
+  (let ((found-books (remove-if-not (lambda (b) (string-equal title (book-title b))) *library*)))
+    (if found-books
+        (progn
+          (format t "Znalezione ksiazki o tytule ~A:~%" title)
+          (dolist (book found-books)
+            (display-book book)))
+        (format t "Nie znaleziono ksiazek o podanym tytule.~%"))))

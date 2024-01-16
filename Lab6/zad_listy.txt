@@ -100,7 +100,3 @@
     (dotimes (i (- koniec poczatek -1))
       (push (code-char (+ poczatek i)) lista))
     lista))
-
-
-;ZADANIE DOMOWE, DORÓB OTOCZKE, MENU GDY PROGRAM SIĘ URUCHAMIA
-;SKOŃCZYĆ WSZYSTKIE ZADANIA Z DOKUMENTU
